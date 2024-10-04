@@ -11,6 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@carbon/icon-helpers": "^10.53.1",
+    "@carbon/icons": "^11.50.1",
     "astro": "^4.15.9"
   }
 }

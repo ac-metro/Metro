@@ -1,0 +1,109 @@
+---
+const { ButtonId, ButtonText, ButtonClass, IconPosition, IconType } = Astro.props;
+
+// Define your icons based on the IconType prop
+let IconSvg;
+switch (IconType) {
+  // "Back"
+  case 'icon1':
+    IconSvg = "M20,10H7.8149l3.5874-3.5859L10,5,4,11,10,17l1.4023-1.4146L7.8179,12H20a6,6,0,0,1,0,12H12v2h8a8,8,0,0,0,0-16Z";
+    break;
+  // "Next"
+  case 'icon2':
+    IconSvg = "M18 6L16.57 7.393 24.15 15 4 15 4 17 24.15 17 16.57 24.573 18 26 28 16 18 6z";
+    break;
+  // "AI Generate"
+  case 'icon3':
+    IconSvg = "M19 22v-2h1v-7h-1v-2h4v2h-1v7h1v2h-4zM15.5005 22h2l-3.5005-11h-3l-3.4966 11h1.9988l.6018-2h4.7781l.6184 2zm-4.7947-4l1.6284-5.4111.2559-.0024 1.6736 5.4136h-3.5579zM32 4L28 4 28 0 26 0 26 4 22 4 22 6 26 6 26 10 28 10 28 6 32 6 32 4zM30 12H32V14H30zM18 0H20V2H18z M32 32L0 32 0 0 14 0 14 2 2 2 2 30 30 30 30 18 32 18 32 32z";
+    break;
+  // Add more icons here as needed
+  default:
+    IconSvg = null; // No icon if IconType is not provided or unrecognized
+    break;
+}
+---
+
+<button id={ButtonId} class:list={["button", ButtonClass, IconPosition]}>
+  {IconPosition === 'icon-left' && (
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 32 32">
+        <path d={IconSvg} />
+      </svg>
+  )}
+  <span>{ButtonText}</span>
+  {IconPosition === 'icon-right' && ( 
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 32 32">
+        <path d={IconSvg} />
+      </svg>
+  )}
+</button>
+
+<style>
+
+:root{
+--hover-shade: 20%;
+--hover-color: black;
+}
+
+.button {
+  font-family: var(--ff-base);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Space between text and icon */
+  transition: 0.5s;
+
+  &.icon-left{
+    padding: 0.75rem 2rem 0.75rem 1rem;
+  }
+  &.icon-right {
+    padding: 0.75rem 1rem 0.75rem 2rem;
+  }
+
+}
+
+.button-blue{
+  background-color: var(--color-04);
+  border: 1px solid var(--color-04);
+  color: var(--color-00);
+  &:hover{
+    background-color: color-mix(in oklab, var(--hover-color) var(--hover-shade), var(--color-04));
+  }
+}
+
+.button-white{
+  background-color: var(--color-00);
+  border: 1px solid var(--color-04);
+  color: var(--color-04);
+  &:hover{
+    background-color: color-mix(in oklab, var(--hover-color) var(--hover-shade), var(--color-00));
+  }
+  svg{
+    fill: var(--color-04);
+  }
+}
+
+.button-gray{
+  background-color: var(--color-05);
+  border: 1px solid var(--color-05);
+  color: var(--color-01);
+  &:hover{
+    background-color: color-mix(in oklab, var(--hover-color) var(--hover-shade), var(--color-05));
+  }
+  svg{
+    fill: var(--color-01);
+  }
+}
+
+.button-white-gray{
+  background-color: var(--color-00);
+  border: 1px solid var(--color-05);
+  color: var(--color-05);
+  &:hover{
+    background-color: color-mix(in oklab, var(--hover-color) var(--hover-shade), var(--color-00));
+  }
+  svg{
+    fill: var(--color-05);
+  }
+}
+</style>

@@ -1,0 +1,40 @@
+---
+import FooterButtons from './FooterButtons.astro';
+import Button from './Button.astro';
+---
+
+<div>
+    <h2>Ideation</h2>
+    <p>This is the content of the Ideation section.</p>
+
+    <FooterButtons 
+        firstButtonId='ideation-first-button'
+        secondButtonId='ideation-first-button'
+        firstButtonText='Reset All'
+        secondButtonText='Next Step'
+        firstButtonClass='button-blue'
+        secondButtonClass='button-white-gray'
+        firstButtonPosition="icon-left"
+        secondButtonPosition="icon-right"
+        firstButtonType="icon3"
+        secondButtonType="icon2"
+        />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstButton = document.getElementById('ideation-first-button');
+            const secondButton = document.getElementById('ideation-second-button');
+
+            if (firstButton) {
+                firstButton.setAttribute('hx-trigger', 'click'); // Set up htmx to load Refinement
+                firstButton.setAttribute('hx-get', '/refinement');
+                firstButton.setAttribute('hx-target', '#content');
+            }
+
+            if (secondButton) {
+                secondButton.setAttribute('hx-get', '/links'); // Set up htmx to load Links
+                secondButton.setAttribute('hx-target', '#content');
+            }
+        });
+    </script>
+</div>
