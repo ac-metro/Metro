@@ -8,14 +8,18 @@
 :root{
 --ff-base:"IBM Plex Sans Condensed", sans-serif;
 
+--main-container-width: 1150px;
+--main-padding: 1rem;
+
 --color-00: rgb(255, 255, 255);
+--color-07: rgb(251, 251, 253);
+--color-08: rgb(243, 244, 248);
 --color-05: rgb(230, 231, 235);
 --color-01: rgb(128, 135, 150);
 --color-02: rgb(28, 39, 66);
 --color-03: rgb(72, 107, 229);
 --color-04: rgb(56, 90, 227);
-
-
+--color-06: rgb(42, 61, 122);
 }
 
 body {
@@ -26,13 +30,49 @@ body {
   font-size: 1rem;
 }
 
+h1, h2, h3, h4, h5 {
+  color: var(--color-02);
+  font-weight: 500;
+  margin: var(--main-padding) 0;
+}
+a, a:hover, a:visited {
+  text-decoration: none;
+}
+
+header, nav, section,
+.main-container{
+  display: grid;
+  grid-template-columns: 
+  minmax(var(--main-padding), 1fr)
+  min(var(--main-container-width), 100% - var(--main-padding)*2)
+  minmax(var(--main-padding), 1fr);
+  & > * {
+    grid-column: 2 / 3;
+  }
+}
+.main-2col{
+  gap: calc(var(--main-padding)*2);
+  > div:first-child{
+    width: 300px;
+    height: 200px;
+    background-color: blue;
+  }
+  > div:nth-child(2){
+    width: 100%;
+    height: 200px;
+    background-color: rgb(68, 255, 0);
+  }
+}
+
 .break-mobile{
   display: flex;
 }
 
-
 @media only screen and (max-width:600px){
   .break-mobile{
     flex-direction: column;
+    & > * {
+      width: 100% !important;
+    }
   }
 }

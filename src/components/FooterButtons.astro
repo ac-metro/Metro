@@ -3,19 +3,29 @@ import Button from "./Button.astro";
 const { firstButtonId, secondButtonId, firstButtonText, secondButtonText, firstButtonClass, secondButtonClass, firstButtonPosition, secondButtonPosition, firstButtonType, secondButtonType } = Astro.props;
 ---
 
-<div class="footer-buttons">
-    <Button 
-        ButtonId={firstButtonId}
-        ButtonText={firstButtonText}
-        ButtonClass={firstButtonClass}
-        IconPosition={firstButtonPosition}
-        IconType={firstButtonType}
-        />
-    <Button 
-        ButtonId={secondButtonId}
-        ButtonText={secondButtonText}
-        ButtonClass={secondButtonClass}
-        IconPosition={secondButtonPosition}
-        IconType={secondButtonType}
-        />
-</div>
+<section>
+    <div class="footer-buttons">
+        <Button 
+            ButtonId={firstButtonId}
+            ButtonText={firstButtonText}
+            ButtonClass={firstButtonClass}
+            IconPosition={firstButtonPosition}
+            IconType={firstButtonType}
+            />
+        <Button 
+            ButtonId={secondButtonId}
+            ButtonText={secondButtonText}
+            ButtonClass={secondButtonClass}
+            IconPosition={secondButtonPosition}
+            IconType={secondButtonType}
+            />
+    </div>
+</section>
+
+<style>
+    .footer-buttons{
+        display: flex;
+        justify-content: space-between;
+        padding-top: var(--main-padding);
+        }
+</style>

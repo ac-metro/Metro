@@ -51,7 +51,7 @@ switch (IconType) {
   display: flex;
   align-items: center;
   gap: 0.75rem; /* Space between text and icon */
-  transition: 0.5s;
+  transition: 0.3s;
 
   &.icon-left{
     padding: 0.75rem 2rem 0.75rem 1rem;
@@ -77,6 +77,22 @@ switch (IconType) {
   color: var(--color-04);
   &:hover{
     background-color: color-mix(in oklab, var(--hover-color) var(--hover-shade), var(--color-00));
+  }
+  svg{
+    fill: var(--color-06);
+  }
+}
+
+.button-white-blue{
+  background-color: var(--color-00);
+  border: 1px solid var(--color-04);
+  color: var(--color-04);
+  &:hover{
+    background-color: color-mix(in oklab, var(--color-04) 100%, var(--color-00));
+    color: var(--color-00);
+    svg{
+      fill: var(--color-00);
+    }
   }
   svg{
     fill: var(--color-04);
